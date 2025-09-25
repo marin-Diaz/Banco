@@ -1,9 +1,11 @@
 package com.udea.bancoudea.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+
 
 @Entity
 @Table(name = "transactions")
@@ -11,6 +13,7 @@ public class Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
 private Long id;
 @Column(nullable = false)
 private String senderAccountNumber;
@@ -18,8 +21,8 @@ private String senderAccountNumber;
 private String receiverAccountNumber;
 @Column(nullable = false)
 private Double amount;
-@Column(nullable = false)
-private LocalDateTime timestamp;
+
+
 
     public Transaction() {
     }
@@ -29,7 +32,7 @@ private LocalDateTime timestamp;
         this.senderAccountNumber = senderAccountNumber;
         this.receiverAccountNumber = receiverAccountNumber;
         this.amount = amount;
-        this.timestamp = timestamp;
+
     }
 
 
@@ -65,11 +68,5 @@ private LocalDateTime timestamp;
         this.amount = amount;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
 }

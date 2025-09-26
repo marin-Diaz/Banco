@@ -21,16 +21,23 @@ public class Customer {
     private String lastName;
     @Column(nullable = false)
     private Double balance;
+    private long totalTransactions;
 
     public Customer() {
     }
     @JsonCreator
-    public Customer(@JsonProperty("id") Long id, @JsonProperty("accountNumber") String accountNumber, @JsonProperty("firstName") String firstName, @JsonProperty("lastName")  String lastName, @JsonProperty("balance")  Double balance) {
+    public Customer(@JsonProperty("id") Long id,
+                    @JsonProperty("accountNumber") String accountNumber,
+                    @JsonProperty("firstName") String firstName,
+                    @JsonProperty("lastName")  String lastName,
+                    @JsonProperty("balance")  Double balance,
+                    long totalTransactions ) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
+        this.totalTransactions = totalTransactions;
     }
 
     public Long getId() {
@@ -71,5 +78,13 @@ public class Customer {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public long getTotalTransactions() {
+        return totalTransactions;
+    }
+
+    public void setTotalTransactions(long totalTransactions) {
+        this.totalTransactions = totalTransactions;
     }
 }

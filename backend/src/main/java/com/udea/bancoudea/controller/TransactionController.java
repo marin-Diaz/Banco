@@ -16,8 +16,6 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
 
-
-
     @PostMapping
     public ResponseEntity<?> transferMoney(@RequestBody TransactionDTO transactionDTO) {
         try {
@@ -33,5 +31,11 @@ public class TransactionController {
         return transactionService.getTransactionsForAccount(accountNumber);
     }
 
-
+    //NUEVO ENDPOINT AÑADIDO: Para obtener el historial global (usando /api/transactions/all)
+    @GetMapping("/all")
+    public ResponseEntity<List<TransactionDTO>> getAllTransactions() {
+        // Llama a la nueva función del servicio que obtiene todas las transacciones
+        List<TransactionDTO> history = transactionService.findAllTransactions();
+        return ResponseEntity.ok(history);
+    }
 }

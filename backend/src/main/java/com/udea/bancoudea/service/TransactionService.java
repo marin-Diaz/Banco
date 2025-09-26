@@ -7,6 +7,7 @@ import com.udea.bancoudea.repository.CustomerRepository;
 import com.udea.bancoudea.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort; // 💡 Necesitas esta importación para ordenar
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,19 +22,19 @@ public class TransactionService {
     private CustomerRepository customerRepository;
 
     public TransactionDTO transferMoney(TransactionDTO transactionDTO) {
-        //validar que los numeros de cuenta no sean nulos
+        // valida que los numeros de cuenta no sean nulos
         if(transactionDTO.getSenderAccountNumber()==null || transactionDTO.getReceiverAccountNumber()==null){
             throw new IllegalArgumentException("Sender Account Number or Receiver Account Number cannot be null");
         }
 
-        //Buscar los clientes por numero de cuenta
+        //Busca los clientes por numero de cuenta
         Customer sender = customerRepository.findByAccountNumber(transactionDTO.getSenderAccountNumber())
                 .orElseThrow(()-> new IllegalArgumentException("Sender Account Number not found"));
 
         Customer receiver = customerRepository.findByAccountNumber(transactionDTO.getReceiverAccountNumber())
                 .orElseThrow(()-> new IllegalArgumentException("Receiver Account Number not found"));
 
-        //Validar que el remitente tenga saldo suficiente
+        //Valida que el remitente tenga saldo suficiente
         if(sender.getBalance() < transactionDTO.getAmount()){
             throw new IllegalArgumentException("Sender Balance not enough");
         }
@@ -42,7 +43,7 @@ public class TransactionService {
         sender.setBalance(sender.getBalance() - transactionDTO.getAmount());
         receiver.setBalance(receiver.getBalance() + transactionDTO.getAmount());
 
-        //Guardar los cambios en las cuentas
+        //Guarda los cambios en las cuentas
         customerRepository.save(sender);
         customerRepository.save(receiver);
 
@@ -75,4 +76,19 @@ public class TransactionService {
         }).collect(Collectors.toList());
     }
 
+    //NUEVA FUNCIÓN: Obtiene todas las transacciones para el historial global
+    public List<TransactionDTO> findAllTransactions() {
+        // Usamos findAll() y ordenamos por ID de forma descendente
+        List<Transaction> transactions = transactionRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+
+        // Mapear a DTOs
+        return transactions.stream().map(transaction -> {
+            TransactionDTO dto = new TransactionDTO();
+            dto.setId(transaction.getId());
+            dto.setSenderAccountNumber(transaction.getSenderAccountNumber());
+            dto.setReceiverAccountNumber(transaction.getReceiverAccountNumber());
+            dto.setAmount(transaction.getAmount());
+            return dto;
+        }).collect(Collectors.toList());
+    }
 }

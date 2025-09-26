@@ -43,7 +43,7 @@ const DashboardPage = () => {
             colorStyle: { backgroundColor: '#fff', border: '3px solid #3498db', color: '#000' }
         },
         {
-            title: "Saldo Promedio por Cuenta",
+            title: "Saldo Promedio en Cuentas",
             value: formatCurrency(stats.averageBalance),
             icon: <img src={averageIcon} alt="Saldo Promedio" style={{ width: '60px', height: '60px' }} />,
             colorStyle: { backgroundColor: '#fff', border: '3px solid #2ecc71', color: '#000' }

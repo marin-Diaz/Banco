@@ -27,7 +27,7 @@ private Double amount;
     public Transaction() {
     }
 
-    public Transaction(Long id, String senderAccountNumber, String receiverAccountNumber, Double amount, LocalDateTime timestamp) {
+    public Transaction(Long id, String senderAccountNumber, String receiverAccountNumber, Double amount) {
         this.id = id;
         this.senderAccountNumber = senderAccountNumber;
         this.receiverAccountNumber = receiverAccountNumber;
@@ -39,7 +39,6 @@ private Double amount;
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -47,7 +46,6 @@ private Double amount;
     public String getSenderAccountNumber() {
         return senderAccountNumber;
     }
-
     public void setSenderAccountNumber(String senderAccountNumber) {
         this.senderAccountNumber = senderAccountNumber;
     }
@@ -55,7 +53,6 @@ private Double amount;
     public String getReceiverAccountNumber() {
         return receiverAccountNumber;
     }
-
     public void setReceiverAccountNumber(String receiverAccountNumber) {
         this.receiverAccountNumber = receiverAccountNumber;
     }
@@ -63,7 +60,6 @@ private Double amount;
     public Double getAmount() {
         return amount;
     }
-
     public void setAmount(Double amount) {
         this.amount = amount;
     }

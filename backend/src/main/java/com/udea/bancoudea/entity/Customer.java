@@ -22,21 +22,23 @@ public class Customer {
     @Column(nullable = false)
     private Double balance;
 
+    private long totalTransactions; // New field to track total transactions
+
     public Customer() {
     }
     @JsonCreator
-    public Customer(@JsonProperty("id") Long id, @JsonProperty("accountNumber") String accountNumber, @JsonProperty("firstName") String firstName, @JsonProperty("lastName")  String lastName, @JsonProperty("balance")  Double balance) {
+    public Customer(@JsonProperty("id") Long id, @JsonProperty("accountNumber") String accountNumber, @JsonProperty("firstName") String firstName, @JsonProperty("lastName")  String lastName, @JsonProperty("balance")  Double balance, long totalTransactions) {
         this.id = id;
         this.accountNumber = accountNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.balance = balance;
+        this.totalTransactions = totalTransactions;
     }
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -44,7 +46,6 @@ public class Customer {
     public String getAccountNumber() {
         return accountNumber;
     }
-
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
     }
@@ -52,7 +53,6 @@ public class Customer {
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -60,7 +60,6 @@ public class Customer {
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -68,8 +67,16 @@ public class Customer {
     public Double getBalance() {
         return balance;
     }
-
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public long getTotalTransactions() {
+        return totalTransactions;
+    }
+
+    // SETTER NUEVO
+    public void setTotalTransactions(long totalTransactions) {
+        this.totalTransactions = totalTransactions;
     }
 }

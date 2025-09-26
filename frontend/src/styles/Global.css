@@ -1,0 +1,188 @@
+
+/* ===================================================================
+   VARIABLES GLOBALES (Tema Gris Claro/Blanco del Mockup)
+   =================================================================== */
+:root {
+    /* Colores Principales */
+    --primary-color: #007bff;   /* Azul para énfasis (botones de foco, etc.) */
+    --secondary-color: #6c757d; /* Gris oscuro para subtítulos */
+    --text-color: #212529;      /* Texto principal (Casi negro) */
+
+    /* Fondos y Superficies */
+    --dark-bg: #f8f9fa;        /* Fondo principal de APP (Gris muy claro) */
+    --content-bg: #ebebeb;     /* Fondo del área de contenido (Gris sutil) */
+    --card-bg: #ffffff;        /* Fondo de tarjetas (Blanco puro) */
+    --input-bg: #ffffff;        /* Fondo de input (Blanco puro para contraste) */
+
+    /* Estados */
+    --success-color: #28a745;   /* Verde para éxito */
+    --danger-color: #dc3545;    /* Rojo para error */
+
+    /* Componentes */
+    --border-radius: 8px;
+    --shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para tarjetas */
+}
+
+
+/* ===================================================================
+   RESETEO BÁSICO
+   =================================================================== */
+body {
+    background-color: var(--content-bg);
+    color: var(--text-color);
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-color);
+    margin-top: 0;
+    font-weight: 600;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-color);
+    font-size: 0.9em;
+}
+
+
+/* ===================================================================
+   ESTILOS DE COMPONENTES BÁSICOS
+   =================================================================== */
+
+/* --- Tarjetas (card-style) --- */
+.card-style {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+}
+
+/* --- Título principal de la página --- */
+h1 {
+    font-size: 2rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+
+/* ===================================================================
+   ESTILOS DE FORMULARIO (Inputs Flotantes sin Borde y Redondeados)
+   =================================================================== */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+
+    /* Diseño Flotante del Mockup */
+    border: none;
+    background-color: var(--content-bg);
+
+    /* Borde redondeado más pronunciado */
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+
+    /* Espaciado */
+    margin: 5px 0 15px 0;
+
+    box-sizing: border-box;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+
+}
+
+/* Estado de Foco (Sutil Resplandor Azul) */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border: none; /* Asegura la eliminación del borde */
+
+    /* Sombra azul semitransparente para el foco suave */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.4);
+    background-color: #fcfcfc;
+}
+
+
+/* ===================================================================
+   ESTILOS DE BOTONES
+   =================================================================== */
+
+/* Botón principal (Crear Cliente) - Negro y redondeado */
+.btn-primary-style {
+    background-color: #1e1e1e; /* Negro */
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    border-radius: 8px; /* Redondeo calcado del mockup */
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.btn-primary-style:hover {
+    background-color: #000000;
+}
+
+/* Botón secundario (Útil para Búsqueda/Acciones Secundarias) */
+.btn-secondary-style {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 12px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-secondary-style:hover {
+    background-color: #5a6268;
+}
+
+
+/* ===================================================================
+   ESTILOS DE MENSAJES Y CARGA
+   =================================================================== */
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #c3e6cb;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #f5c6cb;
+    font-weight: 500;
+}
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.8em;
+    margin-top: -5px;
+    margin-bottom: 10px;
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.2em;
+    color: var(--primary-color);
+}

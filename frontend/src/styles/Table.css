@@ -1,0 +1,85 @@
+
+/* Contenedor responsivo para tablas grandes */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    margin-top: 15px;
+}
+
+/* Estilo base de la tabla */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    min-width: 600px; /* Asegura que la tabla no sea demasiado estrecha */
+}
+
+/* Estilos del encabezado (thead) */
+.data-table thead tr {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Estilos de las celdas de encabezado (th) */
+.data-table th {
+    padding: 12px 15px;
+}
+
+/* Estilos de las celdas de datos (td) */
+.data-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Estilos para filas impares (opcional, para mejor legibilidad) */
+.data-table tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa; /* Gris muy claro */
+}
+
+/* Efecto hover */
+.data-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Alineación de acciones en la tabla de clientes */
+.table-actions {
+    text-align: right;
+    width: 1%; /* Ocupa el espacio mínimo necesario */
+}
+
+/* Estilo para el botón de eliminación en la tabla */
+.delete-button {
+    background-color: #dc3545; /* Rojo de error */
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+
+/* --- Mensajes de Alerta --- */
+
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.success-alert {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.error-alert {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

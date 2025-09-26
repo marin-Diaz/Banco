@@ -2,6 +2,8 @@ package com.udea.bancoudea.controller;
 
 import com.udea.bancoudea.DTO.CustomerDTO;
 import com.udea.bancoudea.service.CustomerService;
+import com.udea.bancoudea.DTO.DashboardStatsDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +19,8 @@ public class CustomerController {
         this.customerFacade = customerFacade;
     }
 
+    @Autowired
+    private CustomerService customerService;
     //Obtener todos los cliente
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
@@ -36,5 +40,11 @@ public class CustomerController {
             throw new IllegalArgumentException("Balance cannot be null");
         }
         return ResponseEntity.ok(customerFacade.createCustomer(customerDTO));
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<DashboardStatsDTO> getStats() {
+        DashboardStatsDTO stats = customerService.getCustomerDashboardStats();
+        return ResponseEntity.ok(stats);
     }
 }

@@ -1,0 +1,82 @@
+
+.sidebar-layout {
+    display: flex;
+    min-height: 100vh;
+    /* El sistema bancario principal tiene un borde arriba para separarlo */
+    border-top: 5px solid #007bff;
+}
+
+.sidebar {
+    /* Fondo blanco o muy claro del mockup */
+    width: 250px;
+    background-color: #ffffff;
+    padding: 20px 0;
+    /* Sombra suave a la derecha como un separador sutil */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #f1f1f1;
+}
+
+.sidebar h2 {
+    color: #212529; /* Título oscuro "Banco Digital" */
+    text-align: left;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.nav-links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links-list li a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px; /* Más compacto */
+    color: #495057; /* Texto de enlace gris oscuro */
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links-list li a:hover {
+    background-color: #f8f9fa; /* Fondo muy claro al pasar el mouse */
+    color: #212529;
+}
+
+/* Estilo para el ítem de menú ACTIVO (Calcado del Mockup) */
+.nav-links-list li .active-link {
+    /* Fondo ligeramente gris claro */
+    background-color: #f1f1f1;
+    color: #212529;
+    font-weight: 600;
+    /* Borde a la izquierda (en lugar de derecha) o un color sutil */
+    border-left: 3px solid var(--primary-color);
+    padding-left: 17px; /* Compensar por el borde */
+}
+
+.nav-links-list li .active-link:hover {
+    background-color: #f1f1f1; /* No cambia al pasar el mouse si ya está activo */
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 30px 40px; /* Espacio extra para el contenido principal */
+    background-color: #ebebeb; /* Fondo de contenido ligeramente más oscuro */
+}
+
+/* 💡 Estilo para el "Sistema Bancario" y el espacio superior */
+.header-system-title {
+    color: #212529;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    /* Separador sutil del contenido principal */
+    border-bottom: 1px solid #ddd;
+}

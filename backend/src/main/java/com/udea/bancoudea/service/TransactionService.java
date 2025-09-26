@@ -7,6 +7,7 @@ import com.udea.bancoudea.repository.CustomerRepository;
 import com.udea.bancoudea.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort; // 💡 Necesitas esta importación para ordenar
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,8 +21,10 @@ public class TransactionService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    // ... (Tu método transferMoney sin cambios) ...
+
     public TransactionDTO transferMoney(TransactionDTO transactionDTO) {
-        //validar que los numeros de cuenta no sean nulos
+        // validar que los numeros de cuenta no sean nulos
         if(transactionDTO.getSenderAccountNumber()==null || transactionDTO.getReceiverAccountNumber()==null){
             throw new IllegalArgumentException("Sender Account Number or Receiver Account Number cannot be null");
         }
@@ -63,8 +66,26 @@ public class TransactionService {
 
     }
 
+    // ... (Tu método getTransactionsForAccount sin cambios) ...
     public List<TransactionDTO> getTransactionsForAccount(String accountNumber) {
         List<Transaction> transactions = transactionRepository.findBySenderAccountNumberOrReceiverAccountNumber(accountNumber,accountNumber);
+        return transactions.stream().map(transaction -> {
+            TransactionDTO dto = new TransactionDTO();
+            dto.setId(transaction.getId());
+            dto.setSenderAccountNumber(transaction.getSenderAccountNumber());
+            dto.setReceiverAccountNumber(transaction.getReceiverAccountNumber());
+            dto.setAmount(transaction.getAmount());
+            // dto.setTimestamp(transaction.getTimestamp()); 💡 Añadir si existe
+            return dto;
+        }).collect(Collectors.toList());
+    }
+
+    // NUEVA FUNCIÓN: Obtiene todas las transacciones para el historial global
+    public List<TransactionDTO> findAllTransactions() {
+
+        List<Transaction> transactions = transactionRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
+
+        // Mapear a DTOs
         return transactions.stream().map(transaction -> {
             TransactionDTO dto = new TransactionDTO();
             dto.setId(transaction.getId());
@@ -74,5 +95,4 @@ public class TransactionService {
             return dto;
         }).collect(Collectors.toList());
     }
-
 }
